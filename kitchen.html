@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قسم المطابخ</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* التصميم الأساسي */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffafbd, #ffc3a0, #dff1ff, #a1c4fd);
+      color: black;
+      direction: rtl;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* شريط المهام */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #4b6cb7, #182848);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      background-color: #6f86d6;
+    }
+
+    /* الصور */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 أعمدة متساوية */
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+      opacity: 0;  /* بداية مخفية */
+      animation: fadeIn 1.5s forwards;  /* إضافة الأنيميشن للظهور */
+    }
+
+    /* تعريف الأنيميشن */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* تحديد العرض والارتفاع للبطاقات */
+    .gallery .card {
+      width: 100%;  /* العرض سيأخذ 100% من العمود المتاح */
+      height: 350px; /* تحديد الارتفاع الثابت */
+      background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+      border-radius: 10px;
+      padding: 0px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.6s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+
+    .gallery .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery .card:hover img {
+      transform: scale(1.2);
+    }
+
+    .gallery h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #4b6cb7;
+    }
+
+    .gallery p {
+      font-size: 30px;
+      color: black;
+      font-weight: bold;
+    }
+
+    /* الفوتر */
+    footer {
+      background: linear-gradient(to right, #182848, #4b6cb7);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 12px;
+      position: fixed;  /* تغيير من sticky إلى fixed */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      transition: transform 0.3s ease-in-out;  /* لتطبيق التحويل عند الاختفاء أو الظهور */
+    }
+
+    footer.hidden {
+      transform: translateY(100%);  /* إخفاء الفوتر */
+    }
+
+    footer .icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: white;
+      font-size: 18px;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #6f86d6;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    footer a:hover {
+      background: #8496e2;
+    }
+
+    /* استعلامات الوسائط للشاشات الصغيرة */
+    @media (max-width: 768px) {
+      .navbar .logo {
+        font-size: 20px;
+      }
+
+      .navbar .menu a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr); /* تقليل الأعمدة إلى عمودين */
+      }
+
+      .gallery h3 {
+        font-size: 18px;
+      }
+
+      .gallery p {
+        font-size: 20px;
+      }
+
+      footer {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar .logo {
+        font-size: 18px;
+      }
+
+      .navbar .menu a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr; /* عمود واحد */
+      }
+
+      .gallery h3 {
+        font-size: 16px;
+      }
+
+      .gallery p {
+        font-size: 14px;
+      }
+
+      footer {
+        font-size: 10px;
+      }
+    }
+</style>
+
+</head>
+<body>
+
+  <!-- شريط المهام -->
+  <div class="navbar">
+    <div class="logo">عرض الجوري لتصميم المطابخ والخزائن محل رقم 19</div>
+    <div class="menu">
+      <a href="index.html">الصفحة الرئيسية</a>
+      <a href="tel:+966566204168">اتصل بنا</a>
+    </div>
+  </div>
+
+  <!-- الصور -->
+  <section class="gallery">
+    <div class="card">
+
+      <img src="مطبخ 1.jpg" alt="مطبخ 1">
+      <h3>مطبخ فاخر</h3>
+      <p>تصميم حديث يناسب جميع الأذواق.</p>
+    </div>
+
+    <div class="card">
+      <img src="خزانة-مطبخ-ميلامين-بيضاء-حديثة-على-شكل-حرف-U-oppoliaksa-02-1.webp" alt="مطبخ 2">
+      <h3>مطبخ عصري</h3>
+      <p>خامات عالية الجودة مع تشطيب مميز.</p>
+
+   </div>
+    <div class="card">
+      <img src="unnamed.jpg" alt="مطبخ 3">
+      <h3>مطابخ الكلادينج</h3>
+      <p>مطبخ انيق يناسب الاذوق العاليه</p>
+    </div>
+
+
+        <div class="card">
+      <img src="مطبخ-مطلي-باللون-الأبيض-شديد-اللمعان-مع-جزيرة-oppoliaksa.webp" alt="مطبخ 3">
+      <h3> مطبخ مطلي بالابيض</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+          <div class="card">
+      <img src="خزانة-مطبخ-مطلية-باللون-الأبيض-شديد-اللمعان-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ ابيض شديد اللمعان</h3>
+      <p>اعلي واجود الخامات</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-المطبخ-المصنوعة-من-رقائق-معدنية-باللون-الرمادي-على-شكل-حرف-L-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ على شكل L</h3>
+      <p>مطبخ علي شكل Lباللون الرمادي</p>
+    </div>
+     <div class="card">
+      <img src="Retro-Luxury-Custom-Veneer-Kitchen-Cabinet-Design-GREENBERG.webp" alt="مطبخ 3">
+      <h3>مطبخ اسلوب الحياه</h3>
+      <p>مطبخ اسلوب الحياه الراقي</p>
+    </div>
+     <div class="card">
+      <img src="Luxury-Frameless-Flat-Panel-Kitchen-Cabinet-SONG-FOR-YOU.webp" alt="مطبخ 3">
+      <h3>مطبخ انيق</h3>
+      <p>مطبخ انيق بسيط متناغم</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-PVC-باللون-الرمادي-على-شكل-حرف-L-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ  حرف T</h3>
+      <p>مطبخ انيق متناغم علي شكل حرف t</p>
+    </div>
+     <div class="card">
+      <img src="Modern-Minimalist-Beige-Handleless-Kitchen-Cabinets-for-Sale-1.webp" alt="مطبخ 3">
+      <h3>مطبخ انسيابي<h3>
+      <p>مطبخ  انسيابي اناقه بلا حدود بمقابض  باللون البيج</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-على-الطراز-الإيطالي-للبيع-TITAN.webp" alt="مطبخ 3">
+      <h3>مطبخ بالطرز الايطالي</h3>
+      <p>مطبخ بالطرز الايطالي انيق </p>
+    </div>
+     <div class="card">
+      <img src="خزائن-المطبخ-باللونين-الرمادي-والكريمي-على-الطراز-الحديث-البسيط-oppoliaksa-2.webp" alt="مطبخ 3">
+      <h3>مطبخ رمادي كريمي </h3>
+      <p>مطبخ رمادي كريمي بسيط</p>
+    </div>
+     <div class="card">
+      <img src="خزائن-المطبخ-المخصصة-باللون-الفضي-الحديث-oppoliaksa-1.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن</h3>
+      <p>مطبخ فضي مودرن اشيك اصدار</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-صينية-فاخرة-للبيع-MUNCH-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ سعودي مودرن</h3>
+      <p>مطبخ اسيوي  سعودي مودرن</p>
+    </div>
+     <div class="card">
+      <img src="مطبخ-ذو-خط-مستقيم-مطلي-باللون-الفضي-الوامض-مع-جزيرة-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ بوامض مبهر</h3>
+      <p>مطبخ بوامض مبهر مطلي باللون الفضي</p>
+    </div>
+     <div class="card">
+      <img src="المطبخ-المشهور-ذو-اللمعان-العالي-على-شكل-حرف-U-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ عالي اللمعان </h3>
+      <p>اشيك مطبخ مودرن اصدار عالي</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-حديثة-مخصصة-BREEZY-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ عصرري</h3>
+      <p>مطبخ عصري جوده عاليه</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-جديدة-على-الطراز-الصيني-مع-جزيرة-للبيع-DEWROMA-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ صيني</h3>
+      <p>مطبخ علي الطراز الصيني  مع جزيره</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-على-الطراز-الأوروبي-للبيع-NIER-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ اوربي</h3>
+      <p>مطبخ اوربي مع الوان معاصره</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-خشبية-حديثة-من-خشب-البلوط-على-شكل-حرف-L-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ كلاسيكي</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+     <div class="card">
+      <img src="النمط-الصناعي-فتح-ميلامين-كيتن-مع-الجزيرة-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ ملامين</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+     <div class="card">
+      <img src="خزائن-المطبخ-المفتوح-الفاخرة-بالجملة-GOETHE-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مفتوح عصري</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-مفتوحة-حديثة-للبيع-STARRY-oppolia-ksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مفتوح كلاسيكي</h3>
+      <p>مطبخ كلاسيكي مفتوح</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-بيضاء-حديثة-مع-باب-زجاجي-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن بالوان زجاجيه</h3>
+      <p>مطبخ مودرن بالوان زجاجيه انيق</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-حديثة-باللون-الرمادي-اللامع-بتصميم-على-شكل-حرف-L-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن طبيعي</h3>
+      <p>مطبخ مودرن طبيعي يتمايز بنقوش طبيعيه</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-المطبخ-الحديثة-باللونين-الأبيض-والأسود-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ بلاك بيوتي</h3>
+      <p>مطبخ بلاك بيوتي يجمع ما بين اللون الابيض والاسود</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-صغيرة-من-خشب-ألدر-على-شكل-حرف-U-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ الامير </h3>
+      <p>مطبخ  مبهج جذاب </p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-حديثة-باللون-الأخضر-على-شكل-حرف-L-oppoliaksa-06.webp" alt="مطبخ 3">
+      <h3>مطبخ خيالي </h3>
+      <p>مطبخ مستوحي من الغابات</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-حديثة-من-الميلامين-باللون-الأزرق-للبيع-STARTO-oppoliaksa-01.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن </h3>
+      <p>مطبخ مودرن جرئ وخفييف</p>
+    </div>
+     <div class="card">
+      <img src="مطبخ-تقليدي-من-الخشب-الصلب-كبير-الحجم-مع-جزيرة-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ كلاسيكي خشبي</h3>
+      <p>مطبخ خشبي ذوقي كلاسيكي</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-المطبخ-الحديثة-المصنوعة-من-الفولاذ-المقاوم-للصدأ-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ بمساحات واسعه</h3>
+      <p>مطبخ مودرن  بمساحات واسعه</p>
+    </div>
+     <div class="card">
+      <img src="خزائن-المطبخ-المصنوعة-من-خشب-الميلامين-الريفي-oppoliaksa-1.webp" alt="مطبخ 3">
+      <h3>مطبخ خشبي ريفي</h3>
+      <p>مطبخ خشبي ريفي من الملامين</p>
+    </div>
+     <div class="card">
+      <img src="تصميم-مطبخ-مصقول-حسب-الطلب-على-شكل-I-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن</h3>
+      <p>مطبخ مبهر جذاب  مودرن</p>
+    </div>
+     <div class="card">
+      <img src="أزياء-المطبخ-الأبيض-ورنيش-بدون-مقبض-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ مودرن بدون مقابض</h3>
+      <p>مطبخ مودرن بدون مقابض </p>
+    </div>
+     <div class="card">
+      <img src="Custom-Cream-Warm-Kitchen-Cabinet-Design-NITA-1.webp" alt="مطبخ 3">
+      <h3>مطبخ فريش</h3>
+      <p>مطبخ فريش اجود الخامات والمظهر</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-ريفية-من-الخشب-الصلب-مع-جزيرة-oppoliaksa.webp" alt="مطبخ 3">
+      <h3>مطبخ خشبي مودرن</h3>
+      <p>مطبخ خشبي مودرن ريفي</p>
+    </div>
+     <div class="card">
+      <img src="خزانة-مطبخ-مصنوعة-من-الخشب-والحبوب-الحرارية-oppoliaksa-1.webp" alt="مطبخ 3">
+      <h3>مطبخ بسيط خشبي</h3>
+      <p>مطبخ بسيط خشبي</p>
+    </div>
+     <div class="card">
+      <img src="ديكورات مطابخ مودرن.jpg" alt="مطبخ 3">
+      <h3>مطبخ خشمنيوم</h3>
+      <p>مطبخ خشمنيوم عالي الجوده</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-خشمونيوم-2021-1.avif" alt="مطبخ 3">
+      <h3>مطبخ كلاسيكي</h3>
+      <p>مطبخ خشمنيوم كلاسك انيق</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-خشمونيوم-٢٠٢٠-1.avif" alt="مطبخ 3">
+      <h3>مطبخ خشمنيوم  جذاب</h3>
+      <p>مطبخ خشمنيوم مودرن جذاب</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-مودرن-خشمونيوم.avif" alt="مطبخ 3">
+      <h3>مطبخ كلاسيكي</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-خشمونيوم-بيج.avif" alt="مطبخ 3">
+      <h3>مطبخ خشمنيوم مودرن VIP</h3>
+      <p>مطبخ خشمنيوم شيك جدا</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-خشمونيوم-نبيتي-2021.avif" alt="مطبخ 3">
+      <h3>مطبخ الملوك</h3>
+      <p>أجواء دافئة وأناقة لا مثيل لها.</p>
+    </div>
+     <div class="card">
+      <img src="مطابخ-خشمونيوم-سوداء-اللون.webp" alt="مطبخ 3">
+      <h3>مطبخ خشمنيوم اضاءه دخليه</h3>
+      <p>مطبخ خشمنيوم اضاءه داخليه</p>
+    </div>
+
+  </section>
+
+ <footer>
+<div class="icons">
+      <!-- <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a> -->
+      <a href="https://www.instagram.com/gamal0566204168?utm_source=qr&igsh=bm10Y3h1NHhhMXdz" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gamal566204168?_t=ZS-8sqtl4DZTH8&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+     <a href="https://wa.me/966566204168" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+      <a href="https://maps.app.goo.gl/qQyyTQWHK1PYrakC7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+    </div>
+    <p>Created by Engineer Abdullah Mahmoud @2025</p>
+  </footer>
+
+  <script>window.addEventListener('load', function() {
+    // تحديد العنصر الذي يحتوي على البطاقات
+    const gallery = document.querySelector('.gallery');
+
+    // الانتظار مدة قصيرة ثم جعل البطاقات مرئية
+    setTimeout(() => {
+        gallery.style.opacity = 1;  // جعل البطاقات مرئية
+    }, 300);  // تأخير بسيط قبل ظهور البطاقات (يمكنك تعديل هذه القيمة)
+
+    // السكربت الخاص بإخفاء الفوتر عند التمرير لأسفل
+    let lastScrollTop = 0;  // لحفظ موضع التمرير السابق
+    const footer = document.querySelector('footer');  // تحديد عنصر الفوتر
+
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // إذا كان التمرير للأسفل
+        if (currentScroll > lastScrollTop) {
+            footer.classList.add('hidden');  // إخفاء الفوتر
+        } else {
+            footer.classList.remove('hidden');  // إظهار الفوتر
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;  // منع التمرير السالب
+    });
+});
+
+</script>
+
+</body>
+</html> 
+
+
+

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المطابخ</title>
+    <!-- إضافة مكتبة FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+    /* تدرج الألوان */
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ffafbd, #ffc3a0, #dff1ff, #a1c4fd);
+        margin: 0;
+        padding: 0;
+        color: #333;
+        height: 100vh;
+        overflow-x: hidden;
+        direction: rtl; /* محاذاة النصوص من اليمين لليسار */
+    }
+
+    /* شريط المهام */
+    header {
+        background: linear-gradient(90deg, #4b6cb7, #182848);
+        color: white;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+        flex: 1;
+    }
+
+    header .nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    header .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    header .nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* حاوية البطاقات */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 80px 20px 20px 20px;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards;
+        padding-bottom: 60px;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* بطاقة المنتج */
+  .product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 22%; /* تقليص العرض */
+    margin: 10px; /* زيادة المسافة بين البطاقات */
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 250px;
+}
+
+    .product-card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+        color: #333;
+    }
+
+    .product-card p {
+        color: #777;
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* الفوتر */
+    footer {
+        background: linear-gradient(90deg, #4b6cb7, #182848);
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        height: 40px;
+    }
+
+    footer:hover {
+        transform: scale(1.05);
+    }
+
+    footer:active {
+        background-color: #3b7a98;
+    }
+
+    .social-icons {
+        margin-top: 5px;
+    }
+
+    .social-icons a {
+        color: white;
+        font-size: 20px;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        color: #FFD700;
+    }
+
+    .footer-hidden {
+        transform: translateY(100%);
+    }
+
+    /* استعلامات الوسائط لتناسب الأجهزة المختلفة */
+
+    /* للأجهزة الأكبر من اللاب توب */
+    @media (max-width: 1024px) {
+        .product-card {
+            width: 45%;
+        }
+    }
+
+    /* للأجهزة اللوحية (تابلت) */
+    @media (max-width: 768px) {
+        .product-card {
+            width: 48%;
+            margin: 10px 0;
+        }
+    }
+
+    /* للهواتف المحمولة */
+    @media (max-width: 480px) {
+        .product-card {
+            width: 100%; /* عرض كامل على الموبايل */
+            margin: 10px 0;
+        }
+
+        header .nav {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        footer {
+            font-size: 12px;
+            padding: 5px;
+        }
+    }
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>معرض الجوري لتصميم المطابخ والخزائن محل رقم 19</h1>
+    <div class="nav">
+       <a href="tel:+966566204168">اتصل بنا</a>
+       <a href="index.html">Home</a>
+       <a href="index.html"></a>
+    </div>
+</header>
+
+<div class="cards-container">
+    <div class="product-card">
+        <a href="Katchain.html" target="_blank">
+            <img src="unnamed.jpg" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+    <div class="product-card">
+        <a href="katchain2.html" target="_blank">
+            <img src="المطبخ-المشهور-ذو-اللمعان-العالي-على-شكل-حرف-U-oppoliaksa.webp" alt="منتج">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+    <div class="product-card">
+        <a href="katchain3.html" target="_blank">
+            <img src="خزانة-مطبخ-PVC-باللون-الرمادي-على-شكل-حرف-L-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain4.html" target="_blank">
+            <img src="خزانة-مطبخ-خشبية-حديثة-من-خشب-البلوط-على-شكل-حرف-L-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain5.html" target="_blank">
+            <img src="خزانة-مطبخ-على-الطراز-الأوروبي-للبيع-NIER-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain6.html" target="_blank">
+            <img src="تصميم-مطبخ-مصقول-حسب-الطلب-على-شكل-I-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain7.html" target="_blank">
+            <img src="خزانة-مطبخ-حديثة-باللون-الرمادي-اللامع-بتصميم-على-شكل-حرف-L-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain8.html" target="_blank">
+            <img src="Retro-Luxury-Custom-Veneer-Kitchen-Cabinet-Design-GREENBERG.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain9.html" target="_blank">
+            <img src="Modern-Minimalist-Beige-Handleless-Kitchen-Cabinets-for-Sale-1.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain10.html" target="_blank">
+            <img src="مطابخ-خشمونيوم-سوداء-اللون.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain11.html" target="_blank">
+            <img src="مطبخ-ذو-خط-مستقيم-مطلي-باللون-الفضي-الوامض-مع-جزيرة-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain12.html" target="_blank">
+            <img src="مطابخ-خشمونيوم-2021-1.avif" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain13.html" target="_blank">
+            <img src="مطبخ-مطلي-باللون-الأبيض-شديد-اللمعان-مع-جزيرة-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain14.html" target="_blank">
+            <img src="خزانة-مطبخ-على-الطراز-الإيطالي-للبيع-TITAN.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain15.html" target="_blank">
+            <img src="مطابخ-خشمونيوم-نبيتي-2021.avif" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain16.html" target="_blank">
+            <img src="مطبخ-تقليدي-من-الخشب-الصلب-كبير-الحجم-مع-جزيرة-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain17.html" target="_blank">
+            <img src="النمط-الصناعي-فتح-ميلامين-كيتن-مع-الجزيرة-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain18.html" target="_blank">
+            <img src="خزانة-مطبخ-حديثة-من-الميلامين-باللون-الأزرق-للبيع-STARTO-oppoliaksa-01.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain19.html" target="_blank">
+            <img src="خزائن-المطبخ-المفتوح-الفاخرة-بالجملة-GOETHE-oppoliaksa.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain20.html" target="_blank">
+            <img src="خزائن-المطبخ-باللونين-الرمادي-والكريمي-على-الطراز-الحديث-البسيط-oppoliaksa-2.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+     <div class="product-card">
+        <a href="katchain21.html" target="_blank">
+            <img src="خزانة-مطبخ-حديثة-باللون-الأخضر-على-شكل-حرف-L-oppoliaksa-06.webp" alt="رخام">
+            <h3>عرض تفاصيبل المطابخ</h3>
+        </a>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="social-icons">
+<a href="https://www.instagram.com/gamal0566204168?utm_source=qr&igsh=bm10Y3h1NHhhMXdz" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gamal566204168?_t=ZS-8sqtl4DZTH8&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/966566204168" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+      <a href="https://maps.app.goo.gl/qQyyTQWHK1PYrakC7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+
+    </div>
+</footer>
+
+<script>
+    let prevScrollpos = window.pageYOffset;
+    const footer = document.getElementById("footer");
+
+    window.onscroll = function() {
+        let currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            footer.classList.remove("footer-hidden");
+        } else {
+            footer.classList.add("footer-hidden");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

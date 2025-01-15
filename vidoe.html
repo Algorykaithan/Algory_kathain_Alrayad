@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض الجوري لتفصيل المطابخ</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: black;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* شريط المهام */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #4b6cb7, #7a9cc8, #182848);
+
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      width: 100%;
+    }
+
+    .navbar .menu a {
+      color: black;
+      text-decoration: none;
+      font-size: 18px;
+      margin-right: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      background-color: #f0a500;
+    }
+
+    .navbar .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #8b7467;
+    }
+
+    /* الفيديو داخل الكروت */
+    .product-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 كروت في كل صف */
+      gap: 20px; /* المسافة بين الكروت */
+      padding: 20px;
+      margin-bottom: 80px; /* لضمان المسافة بين آخر صف والفوتر */
+    }
+
+    .product-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 10px;
+      color: black;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-card video {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* الفوتر */
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 12px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer .icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    footer a {
+      color: white;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0a500;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    footer a:hover {
+      background-color: #d18d00;
+    }
+
+    /* تحسينات للهواتف */
+    @media (max-width: 768px) {
+      /* تغيير حجم شريط المهام */
+      .navbar {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .navbar .logo {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .navbar .menu a {
+        font-size: 16px;
+        margin-right: 0;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* تغيير عرض الكروت لتناسب الهواتف */
+      .product-cards {
+        grid-template-columns: repeat(1, 1fr); /* 1 كرت في كل صف */
+      }
+
+      .product-card {
+        width: 90%;
+        margin: 10px auto;
+        height: auto;
+      }
+
+      .product-card video {
+        width: 100%;
+        height: 180px;
+      }
+
+      /* تحسين الفوتر ليكون مرنًا */
+     footer {
+        font-size: 12px; /* تقليص حجم النص في الفوتر */
+        padding: 10px 0; /* تقليص المسافة داخل الفوتر */
+      }
+
+      footer .icons {
+        gap: 8px; /* تقليص المسافة بين الأيقونات */
+      }
+
+      footer a {
+        font-size: 16px; /* تقليص حجم الأيقونات */
+        width: 30px; /* تقليص حجم الأيقونات */
+        height: 30px; /* تقليص حجم الأيقونات */
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- شريط المهام -->
+  <div class="navbar">
+    <div class="logo">معلرض الجوري لتصميم المطابخ والخزائن محل رقم 19</div>
+    <div class="menu">
+      <a href="index.html">الرئيسية</a>
+      <!-- <a href="">عن المعرض</a> -->
+      <!-- <a href="#">خدماتنا</a> -->
+      <a href="tel:+966566204168">اتصل بنا</a>
+
+    </div>
+  </div>
+
+  <!-- قسم الفيديوهات داخل الكروت -->
+  <div class="product-cards">
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.11.43_b3b5420c.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.11.43_c0b014b5.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.14.01_dd3966d7.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.28_98893343.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.28_ace12d1e.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.28_d20a5600.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.29_7e008891.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.30_47d1cbe0.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="product-card">
+      <video autoplay muted loop>
+        <source src="WhatsApp Video 2025-01-07 at 02.22.30_a9b3fe3e.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="icons">
+      <!-- <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a> -->
+      <a href="https://www.instagram.com/gamal0566204168?utm_source=qr&igsh=bm10Y3h1NHhhMXdz" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gamal566204168?_t=ZS-8sqtl4DZTH8&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://wa.me/966566204168" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+      <a href="https://maps.app.goo.gl/qQyyTQWHK1PYrakC7" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+    </div>
+     <p>Created by Engineer Abdullah Mahmoud @2025</p>
+  </footer>
+</body>
+</html>
+
+
+
+

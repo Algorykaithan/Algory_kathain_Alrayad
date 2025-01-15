@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة المنتج</title>
+    <!-- إضافة مكتبة FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* إعدادات الأساس */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #f4f4f9;
+        color: #333;
+        direction: ltr; /* تعيين اتجاه النص من اليسار لليمين */
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* شريط المهام */
+    header {
+        background: linear-gradient(135deg, #4b6cb7, #182848);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    header .nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    header .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    header .nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* صورة البودي */
+    .product-image {
+        margin-top: 90px; /* زيادة المسافة العلوية لتفادي التداخل مع الشريط العلوي */
+        text-align: center;
+    }
+
+    .product-image img {
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* النص */
+    .product-info {
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .product-info h2 {
+        font-size: 28px;
+        color: #4b6cb7;
+        margin-bottom: 20px;
+    }
+
+    .product-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* الفوتر */
+    footer {
+        background: linear-gradient(135deg, #4b6cb7, #182848);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer .social-icons a {
+        color: white;
+        font-size: 25px;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+
+    footer .social-icons a:hover {
+        color: #FFD700;
+    }
+
+    /* الاستجابة */
+    @media (max-width: 1024px) {
+        header h1 {
+            font-size: 20px;
+        }
+
+        header .nav a {
+            font-size: 16px;
+        }
+
+        .product-image img {
+            width: 90%;
+        }
+
+        .product-info h2 {
+            font-size: 24px;
+        }
+
+        .product-info p {
+            font-size: 18px;
+        }
+
+        footer .social-icons a {
+            font-size: 22px;
+        }
+    }
+
+    /* التصميم المتجاوب */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        header .nav {
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .product-info h2 {
+            font-size: 22px;
+        }
+
+        .product-info p {
+            font-size: 18px;
+        }
+
+        footer .social-icons a {
+            font-size: 22px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header h1 {
+            font-size: 18px;
+        }
+
+        header .nav a {
+            font-size: 14px;
+        }
+
+        .product-image img {
+            width: 95%;
+        }
+
+        .product-info h2 {
+            font-size: 20px;
+        }
+
+        .product-info p {
+            font-size: 16px;
+        }
+
+        footer .social-icons a {
+            font-size: 20px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>اسم المنتج</h1>
+    <div class="nav">
+        <a href="tel:+966566204168">اتصل بنا</a>
+        <a href="detalil.html"></a>
+        <a href="detalil.html">Home</a>
+        <a href="detalil.html"></a>
+        
+    </div>
+</header>
+
+<div class="product-image">
+    <img src="unnamed.jpg" alt="منتج">
+</div>
+
+<div class="product-info">
+    <h2>معلومات عن المنتج</h2>
+    <p>هتصاميم المطابخ الصغيرة المودرن تجمع بين الأناقة والوظيفية، مما يجعلها خيارًا مثاليًا للمساحات المحدودة. تركز هذه التصاميم على تحقيق أقصى استفادة من كل زاوية، من خلال استخدام حلول ذكية لتخزين العناصر الأساسية. يمكن أن تشمل الأفكار المبتكرة مثل خزائن معلقة لتوفير المساحة، وأسطح عمل متعددة الاستخدامات، وألوان فاتحة لتعزيز الإحساس بالاتساع.
+
+للحصول على تأثير بصري مثير، يمكن استخدام الأسطح اللامعة والمواد العصرية مثل الفولاذ المقاوم للصدأ أو الزجاج. يمكن دمج وحدات الإضاءة المخفية داخل الخزائن لإضاءة فعالة ودافئة دون إشغال المساحة. إضافةً إلى ذلك، تعتبر الأرفف المفتوحة من الحلول الممتازة لعرض الأواني والمكونات بطريقة أنيقة وفي متناول اليد.
+
+تعتبر التصاميم الحديثة للمطابخ الصغيرة أيضاً فرصة لدمج تقنيات حديثة مثل الأجهزة الذكية التي تساعد في تسهيل المهام اليومية. بفضل هذه الحلول، يمكن تحويل أي مطبخ صغير إلى مساحة مريحة وعملية، تجمع بين الأناقة والكفاءة.
+الآن طلب عرض أسعار لتصميم مطبخ مودرن في الرياض</p>
+<p>تصميم حسب احتياجاتك: استمتع بخدمة تصميم مطابخ مودرن في الرياض التي تركز على تلبية احتياجاتك الشخصية. من البداية إلى النهاية، يعمل المصممون على خلق مطبخ يعكس ذوقك ويحقق أقصى استفادة من المساحة المتاحة.
+
+استشارة متخصصة: احصل على استشارة متخصصة لتحديد الأنسب من المواد، الألوان، والتصاميم التي تتناسب مع طابع منزلك. الاستشارة تضمن لك اتخاذ قرارات مستنيرة تجعل مطبخك مميزاً وعصرياً.
+
+تقنيات حديثة: استفد من أحدث التقنيات في تصميم وتركيب المطابخ. يشمل ذلك استخدام المواد المتطورة والتقنيات الذكية التي تضمن لك أداءً ممتازاً وجمالاً دائماً.
+
+تركيب احترافي: يضمن فريق التركيب المحترف تنفيذ كل التفاصيل بدقة، من التركيب الدقيق للأثاث إلى التوصيلات الكهربائية والسباكة. التركيب الاحترافي يضمن لك تجربة خالية من المتاعب ونتائج رائعة.
+
+مواد عالية الجودة: تمتع بجودة المواد التي تستخدمها الشركات في مشاريعها. الجودة العالية تعني متانة طويلة الأمد وأداءاً ممتازاً في مطبخك.
+
+خدمة ما بعد البيع: تحصل على دعم مستمر بعد التركيب لضمان رضاك الكامل. يتضمن ذلك الصيانة والإصلاحات اللازمة لضمان استمرار عمل مطبخك بكفاءة.
+
+تصاميم متنوعة: تقدم الشركات مجموعة واسعة من التصاميم الحديثة التي تتناسب مع مختلف الأذواق والاحتياجات. سواء كنت تفضل الأناقة البسيطة أو الفخامة المعقدة، ستجد التصميم المناسب لك</p>
+</div>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</footer>
+
+</body>
+</html>
+
